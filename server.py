@@ -26,9 +26,9 @@ from pathlib import Path
 
 # ─── Config ───────────────────────────────────────────────────────────────────
 PORT         = 3000
-GEMINI_MODEL = "gemini-2.0-flash"
+GEMINI_MODEL = "gemma-3-27b-it"
 GEMINI_URL   = f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent"
-API_KEY      = os.environ.get("GEMINI_API_KEY", "")
+API_KEY      = os.environ.get("API_KEY_caffine", "")
 
 # ─── MIME types ───────────────────────────────────────────────────────────────
 MIME = {

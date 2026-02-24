@@ -35,9 +35,9 @@ export async function onRequestPost(context) {
     }
 
     // ── API key ───────────────────────────────────────────────────────────────────
-    const apiKey = env.GEMINI_API_KEY;
+    const apiKey = env.API_KEY_caffine;
     if (!apiKey) {
-        return new Response(JSON.stringify({ error: 'Server configuration error: missing API key' }), { status: 500, headers: corsHeaders });
+        return new Response(JSON.stringify({ error: 'Server configuration error: missing API key (API_KEY_caffine)' }), { status: 500, headers: corsHeaders });
     }
 
     // ── Build conversation contents ───────────────────────────────────────────────
@@ -63,7 +63,7 @@ export async function onRequestPost(context) {
     contents.push({ role: 'user', parts: [{ text: message }] });
 
     // ── Call Gemini API ───────────────────────────────────────────────────────────
-    const GEMINI_MODEL = 'gemini-2.0-flash';
+    const GEMINI_MODEL = 'gemma-3-27b-it';
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${apiKey}`;
 
     let geminiResponse;
