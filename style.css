@@ -1,0 +1,811 @@
+/* 
+  PRO-GRADE STYLING FOR CAFFEINE MACHINE 
+  Integrated with Glassmorphism, Mesh Gradients, and Premium Micro-Animations
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+
+:root {
+  /* HSL Design Tokens for Nuanced Control */
+  --h-blue: 224;
+  --s-blue: 35%;
+  --l-blue: 28%;
+
+  --h-teal: 188;
+  --s-teal: 62%;
+  --l-teal: 62%;
+
+  /* Brand Colors */
+  --primary: hsl(var(--h-blue), var(--s-blue), var(--l-blue));
+  --primary-dark: hsl(var(--h-blue), var(--s-blue), 15%);
+  --primary-light: hsl(var(--h-blue), var(--s-blue), 45%);
+
+  --accent: hsl(var(--h-teal), var(--s-teal), 50%);
+  --accent-light: hsl(var(--h-teal), var(--s-teal), 75%);
+  --accent-glow: hsla(var(--h-teal), var(--s-teal), 50%, 0.2);
+
+  --surface: hsl(210, 20%, 99%);
+  --surface-alt: hsl(210, 15%, 95%);
+  --text-main: hsl(var(--h-blue), 50%, 15%);
+  --text-alt: hsl(var(--h-blue), 20%, 40%);
+  --text-muted: hsl(var(--h-blue), 10%, 60%);
+
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-shadow: 0 8px 32px 0 rgba(47, 61, 98, 0.1);
+
+  /* Layout */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 32px;
+  --radius-full: 100px;
+  --container-max: 1300px;
+  --transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Reset & Foundation */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--surface);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Selection */
+::selection {
+  background: var(--accent-light);
+  color: var(--primary-dark);
+}
+
+/* Premium Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-light);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Typography Extensions */
+h1,
+h2,
+h3,
+h4,
+.font-heading {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.font-serif {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 700;
+}
+
+/* ===== MESH BACKGROUNDS ===== */
+.mesh-bg-gradient {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: #ffffff;
+  background-image:
+    radial-gradient(at 0% 0%, hsla(var(--h-teal), var(--s-teal), 80%, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(var(--h-blue), var(--s-blue), 80%, 0.1) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, hsla(var(--h-teal), var(--s-teal), 90%, 0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, hsla(var(--h-blue), var(--s-blue), 95%, 0.1) 0px, transparent 50%);
+}
+
+/* ===== NAVBAR - GLASSMORPHIC ===== */
+.navbar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: var(--container-max);
+  z-index: 1000;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-full);
+  box-shadow: var(--glass-shadow);
+  padding: 10px 30px;
+  transition: var(--transition);
+}
+
+.navbar.scrolled {
+  top: 0;
+  width: 100%;
+  border-radius: 0;
+  padding: 15px 5%;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.logo-text {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 10px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--text-alt);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 10px 18px;
+  border-radius: var(--radius-full);
+  transition: var(--transition);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--primary);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.nav-order-btn {
+  background: var(--primary);
+  color: white !important;
+  padding: 12px 28px;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(47, 61, 98, 0.2);
+  transition: var(--transition);
+}
+
+.nav-order-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(47, 61, 98, 0.3);
+  background: var(--primary-dark);
+}
+
+/* ===== HERO SECTION - ULTRA PREMIUM ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 140px 5% 100px;
+  position: relative;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  align-items: center;
+}
+
+.hero-tag {
+  display: inline-block;
+  background: var(--accent-glow);
+  color: var(--accent);
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 24px;
+}
+
+.hero-title {
+  font-size: clamp(3.5rem, 8vw, 6rem);
+  color: var(--primary);
+  margin-bottom: 30px;
+}
+
+.hero-title .outline {
+  -webkit-text-stroke: 1.5px var(--primary);
+  color: transparent;
+}
+
+.hero-sub {
+  font-size: 1.25rem;
+  color: var(--text-alt);
+  max-width: 500px;
+  margin-bottom: 40px;
+  font-weight: 400;
+}
+
+.btn-premium {
+  padding: 18px 40px;
+  border-radius: var(--radius-full);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.btn-solid {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 10px 25px rgba(47, 61, 98, 0.2);
+}
+
+.btn-solid:hover {
+  transform: translateY(-3px) scale(1.02);
+  background: var(--primary-dark);
+  box-shadow: 0 15px 35px rgba(47, 61, 98, 0.3);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  margin-left: 20px;
+}
+
+.btn-ghost:hover {
+  background: var(--primary);
+  color: white;
+}
+
+/* Hero Visual Part */
+.hero-visual {
+  position: relative;
+}
+
+.hero-main-img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  box-shadow: 20px 20px 0 var(--accent-light);
+  transform: rotate(-2deg);
+  transition: var(--transition);
+}
+
+.hero-main-img:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.floating-badge {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  background: white;
+  padding: 24px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+/* ===== SECTIONS GENERIC ===== */
+section {
+  padding: 120px 5%;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1s var(--transition);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-label {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.section-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  color: var(--primary);
+  margin-bottom: 24px;
+}
+
+/* ===== CARDS PART (FLIGHTS & MENU) ===== */
+.premium-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  border: 1px solid var(--surface-alt);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.premium-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--accent-light), transparent);
+  opacity: 0;
+  z-index: -1;
+  transition: var(--transition);
+}
+
+.premium-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(47, 61, 98, 0.1);
+  border-color: var(--accent);
+}
+
+.premium-card:hover::before {
+  opacity: 0.1;
+}
+
+.card-icon {
+  width: 70px;
+  height: 70px;
+  background: var(--surface-alt);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+
+
+/* ===== ABOUT SECTION ===== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.about-visual img {
+  width: 100%;
+  min-height: 400px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: 20px 20px 0 var(--accent-light);
+  background: var(--surface-alt);
+}
+
+.about-stats {
+  display: flex;
+  gap: 40px;
+  margin: 30px 0;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-num {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ===== FLIGHTS SECTION ===== */
+.flights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+/* ===== CONTACT SECTION ===== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  align-items: stretch;
+  background: white;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 40px 100px rgba(47, 61, 98, 0.1);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  background: var(--primary);
+  color: white;
+  padding: 80px 60px;
+}
+
+.contact-info h3 {
+  color: white;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1;
+}
+
+.info-item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.info-icon {
+  font-size: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  min-width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  color: var(--accent);
+}
+
+.info-content h5 {
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  color: var(--accent-light);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 800;
+}
+
+.info-content p {
+  opacity: 0.8;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.contact-form-area {
+  padding: 80px 60px;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-form-area h3 {
+  margin-bottom: 40px;
+  font-size: 2rem;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 18px 24px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: white;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: var(--transition);
+  color: var(--text-main);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-glow);
+}
+
+.form-control::placeholder {
+  color: var(--text-muted);
+}
+
+/* ===== BANNER TICKER ===== */
+.banner-ticker {
+  background: var(--primary);
+  padding: 20px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ticker-wrap {
+  display: inline-block;
+  animation: ticker 40s linear infinite;
+}
+
+.ticker-item {
+  display: inline-block;
+  padding: 0 40px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.ticker-item span {
+  color: var(--accent);
+}
+
+@keyframes ticker {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ===== CHATBOT IMPROVED ===== */
+.chatbot-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 2100;
+  display: flex;
+  flex-direction: column-reverse;
+  /* Panel above toggle */
+  align-items: flex-end;
+  gap: 15px;
+}
+
+.chatbot-toggle {
+  width: 65px;
+  height: 65px;
+  background: var(--primary);
+  border-radius: 22px;
+  box-shadow: 0 10px 25px rgba(47, 61, 98, 0.3);
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2101;
+}
+
+.chatbot-toggle:hover {
+  transform: rotate(10deg) scale(1.1);
+  background: var(--accent);
+}
+
+.chatbot-panel {
+  width: 380px;
+  height: 520px;
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border);
+  display: none;
+  /* Controlled by JS */
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 2102;
+  transition: var(--transition);
+}
+
+.chatbot-panel.open {
+  display: flex;
+  animation: slideInUp 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chatbot-header {
+  background: var(--primary);
+  padding: 20px;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.chatbot-messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #fdfdfd;
+}
+
+.chat-msg {
+  max-width: 85%;
+  padding: 12px 16px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.chat-msg.bot {
+  align-self: flex-start;
+  background: #f0f2f5;
+  color: var(--text-main);
+  border-bottom-left-radius: 4px;
+}
+
+.chat-msg.user {
+  align-self: flex-end;
+  background: var(--accent);
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.chatbot-input-area {
+  padding: 15px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 8px;
+  background: white;
+}
+
+.chatbot-input-area input {
+  flex: 1;
+  padding: 12px 18px;
+  border-radius: 50px;
+  border: 1px solid var(--border);
+  font-family: inherit;
+  outline: none;
+  transition: var(--transition);
+}
+
+.chatbot-input-area input:focus {
+  border-color: var(--accent);
+}
+
+.chatbot-input-area button {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none;
+  background: var(--primary);
+  color: white;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chatbot-input-area button:hover {
+  background: var(--accent);
+}
+
+/* Responive Part */
+@media (max-width: 968px) {
+
+  .hero-grid,
+  .about-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .about-stats {
+    justify-content: center;
+  }
+
+  .contact-info {
+    padding: 40px 20px;
+  }
+
+  .info-item {
+    text-align: left;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .flights-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-sub {
+    margin: 0 auto 40px;
+  }
+
+  .btn-ghost {
+    margin-left: 0;
+    margin-top: 15px;
+  }
+
+  .navbar {
+    border-radius: 30px;
+    width: 95%;
+  }
+
+  .floating-badge {
+    display: none;
+  }
+}
+
+/* Glass Surface Utility */
+.glass-surface {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+}
