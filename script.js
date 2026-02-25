@@ -28,58 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       navbar.classList.remove('scrolled');
     }
-    updateActiveLink();
-  });
-
-  // ── Mobile nav toggle ─────────────────────────────────────────────────────────
-  const navToggle = document.getElementById('navToggle');
-  const navLinks = document.getElementById('navLinks');
-  if (navToggle) {
-    navToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-    });
-  }
-
-  navLinks.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => navLinks.classList.remove('open'));
-  });
-
-  // Initial call for active link
-  updateActiveLink();
-});
-
-// ── Active nav link on scroll ─────────────────────────────────────────────────
-function updateActiveLink() {
-  const sections = document.querySelectorAll('section[id]');
-  const links = document.querySelectorAll('.nav-link');
-  let current = '';
-
-  sections.forEach(s => {
-    const sectionTop = s.offsetTop;
-    if (window.scrollY >= sectionTop - 120) {
-      current = s.id;
-    }
-  });
-
-  links.forEach(l => {
-    l.classList.remove('active');
-    if (l.getAttribute('href') === '#' + current) {
-      l.classList.add('active');
-    }
-  });
-}
-
-// ── Menu tabs logic ───────────────────────────────────────────────────────────
-document.querySelectorAll('.menu-tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
-
-    tab.classList.add('active');
-    const targetPanel = document.getElementById('panel-' + tab.dataset.tab);
-    if (targetPanel) {
-      targetPanel.classList.add('active');
-    }
   });
 });
 
